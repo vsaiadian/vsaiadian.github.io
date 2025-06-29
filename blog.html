@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Blog</title>
+  <link rel="icon" href="https://64.media.tumblr.com/c5623c33cf59d60da78ce91c03b406e0/451429e34c195341-2d/s75x75_c1/fb241c5b7488870c32a285858df019588e939121.gifv" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="blog.js"></script>
+
+</head>
+
+<body class="blog-page">
+
+  <button id="lang-toggle" class="lang-button">UA</button>
+
+  <div class="background-container">
+    <img class="center-img"
+      src="https://64.media.tumblr.com/92d28a2788646a9f203f3338aa8c24e8/b1701af0a1435f1a-b1/s400x600/f4d23558e287769d6cd28a75731db8a8b5e2244e.gifv"
+      alt="Foreground Frame" />
+  </div>
+
+
+  <nav class="retro-nav">
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="not_found.html">Media Log</a>
+    <a href="not_found.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+
+
+  <main class="blog-container">
+    <button id="lang-toggle" class="lang-button">UA</button>
+    <h2>My Blog</h2>
+
+     <article class="blog-post">
+      <h3>Updates</h3>
+      <p><em>May 10, 2025</em></p>
+      <p>I am still working on implementing a trasnlate button across all pages. I changed the style of all of the pages so far.</p>
+         </article>
+
+    <article class="blog-post">
+      <h3>✨ First Post: Welcome!</h3>
+      <p><em>May 9, 2025</em></p>
+      <p>Hello! I am working on adding a translate button, as I intend to post opportunities on this page. I hope Ukrainians will find this page and make use of it. I also plan to log any improvements or updates to this site.</p>
+    <p>If you have any suggestions, feel free to use the contact me form!</p>
+    <p>Lastly, I have decided to expand the Reading List page and make it into Media Log to share my personal favorites or simply finds across all media.</p>
+  </article>
+
+    <article class="blog-post">
+      <h3>🌸</h3>
+      <p><em>May 8, 2025</em></p>
+      <p>Spring weather has been quite inconsistent. </p>
+      <p>Whenever I will be working on something, the page will not be available.</p>
+    </article>
+
+    <!-- Add more blog-post sections as needed -->
+  </main>
+
+  <!-- Hidden Google Translate element -->
+  <div id="google_translate_element" style="display:none;"></div>
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,uk',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  
+</body>
+
+</html>

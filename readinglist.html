@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reading List</title>
+  <link rel="stylesheet" href="reading.css" />
+  <link rel="icon" href="https://64.media.tumblr.com/b2028bcd61053e1876ebc8130471a352/451429e34c195341-1e/s75x75_c1/339c7a45cb592cd7b68eb25a31d22e1ccb6d4e4e.gifv" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <button id="lang-toggle" class="lang-button">UA</button>
+
+  <!-- Sidebar -->
+<button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+
+  <div class="sidebar" id="sidebar">
+    <a href="index.html" title="Home">🏠 <span class="label">Home</span></a>
+    <a href="blog.html" title="Blog">📝 <span class="label">Blog</span></a>
+    <a href="reading.html" class="active" title="Media Log">📚 <span class="label">Media Log</span></a>
+    <a href="projects.html" title="Projects">💾 <span class="label">Projects</span></a>
+    <a href="contact.html" title="Contact">✉️ <span class="label">Contact</span></a>
+    
+    <div class="now-playing">
+      <div class="music-label">Now Playing</div>
+      <div class="player-ui">
+        <span class="music-btn">⏮️</span>
+        <span class="music-btn">⏸️</span>
+        <span class="music-btn">⏭️</span>
+      </div>
+      <div class="track-info" data-text="Lana Del Rey — Candy Necklace">
+        <span class="scrolling-text">Lil Peep — Mirror, Mirror</span>
+      </div>
+    </div>
+    
+    
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="header">
+      <img src="https://64.media.tumblr.com/b2028bcd61053e1876ebc8130471a352/451429e34c195341-1e/s75x75_c1/339c7a45cb592cd7b68eb25a31d22e1ccb6d4e4e.gifv" alt="book icon" class="book-icon" />
+      <h1>My Reading List</h1>
+    </div>
+
+<!-- FILTERS SECTION -->
+<div class="filters">
+    <div class="genre-tabs">
+      <button onclick="filterGenre('all')" class="tab active">All</button>
+      <button onclick="filterGenre('fiction')" class="tab">Fiction</button>
+      <button onclick="filterGenre('manga')" class="tab">Manga</button>
+      <button onclick="filterGenre('nonfiction')" class="tab">Non-Fiction</button>
+    </div>
+  
+    <div class="status-checkboxes">
+      <label><input type="checkbox" id="filter-read" checked /> ✅ Read</label>
+      <label><input type="checkbox" id="filter-unread" checked /> ❌ Unread</label>
+    </div>
+  </div>
+  
+
+  <div class="book fiction read" onclick="openModal(this)" 
+     data-title="Norwegian Wood"
+     data-author="Haruki Murakami"
+     data-genre="Fiction"
+     data-status="✅ Read"
+     data-date="April 2024"
+     data-rating="⭐⭐⭐⭐☆"
+     data-desc="Melancholic, dreamy, a little heartbreaking."
+     data-notes="‘Memory is a funny thing.’ This one lingered with me. The loneliness is soft and biting.">
+  <h2>📖 Norwegian Wood</h2>
+  <p><strong>Author:</strong> Haruki Murakami</p>
+</div>
+
+<div class="book fantasy to-read" onclick="openModal(this)"
+      data-title="Howl's Moving Castle"
+      data-author="Diana Wynne Jones"
+      data-genre="Fiction"
+      data-status="📚 To Read"
+      data-date=""
+      data-rating=""
+      data-desc="A whimsical fantasy adventure with a snarky wizard."
+      data-notes="Adding this because I adore the Ghibli version! Curious about the book.">
+      <h2>📘 Howl's Moving Castle</h2>
+      <p><strong>Author:</strong> Diana Wynne Jones</p>
+    </div>
+
+  <!-- JS for toggle -->
+  <script>
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("collapsed");
+    }
+  </script>
+
+  <!-- MODAL STRUCTURE -->
+<div id="bookModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeModal()">×</span>
+      <h2 id="modal-title"></h2>
+      <p><strong>Author:</strong> <span id="modal-author"></span></p>
+      <p><strong>Genre:</strong> <span id="modal-genre"></span></p>
+      <p><strong>Status:</strong> <span id="modal-status"></span></p>
+      <p><strong>Date Finished:</strong> <span id="modal-date"></span></p>
+      <p><strong>Rating:</strong> <span id="modal-rating"></span></p>
+      <p><strong>Description:</strong> <span id="modal-desc"></span></p>
+      <p><strong>My Notes:</strong> <span id="modal-notes"></span></p>
+    </div>
+  </div>  
+  <script>
+    function openModal(book) {
+      document.getElementById("modal-title").innerText = book.dataset.title;
+      document.getElementById("modal-author").innerText = book.dataset.author;
+      document.getElementById("modal-genre").innerText = book.dataset.genre;
+      document.getElementById("modal-status").innerText = book.dataset.status;
+      document.getElementById("modal-date").innerText = book.dataset.date;
+      document.getElementById("modal-rating").innerText = book.dataset.rating;
+      document.getElementById("modal-desc").innerText = book.dataset.desc;
+      document.getElementById("modal-notes").innerText = book.dataset.notes;
+  
+      document.getElementById("bookModal").style.display = "block";
+    }
+  
+    function closeModal() {
+      document.getElementById("bookModal").style.display = "none";
+    }
+  
+    // Optional: Close when clicking outside the modal
+    window.onclick = function(event) {
+      const modal = document.getElementById("bookModal");
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+  
+  <script>
+    // Toggle sidebar (already exists)
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("collapsed");
+    }
+  
+    // Genre filter
+    function filterGenre(genre) {
+      document.querySelectorAll(".tab").forEach(btn => btn.classList.remove("active"));
+      event.target.classList.add("active");
+  
+      document.querySelectorAll(".book").forEach(book => {
+        const matchesGenre = genre === "all" || book.classList.contains(genre);
+        const matchesStatus = (
+          (document.getElementById("filter-read").checked && book.classList.contains("read")) ||
+          (document.getElementById("filter-unread").checked && book.classList.contains("unread"))
+        );
+  
+        book.style.display = matchesGenre && matchesStatus ? "block" : "none";
+      });
+    }
+  
+    // Status checkboxes
+    document.getElementById("filter-read").addEventListener("change", () => {
+      const activeGenre = document.querySelector(".tab.active").textContent.toLowerCase();
+      filterGenre(activeGenre === "all" ? "all" : activeGenre);
+    });
+  
+    document.getElementById("filter-unread").addEventListener("change", () => {
+      const activeGenre = document.querySelector(".tab.active").textContent.toLowerCase();
+      filterGenre(activeGenre === "all" ? "all" : activeGenre);
+    });
+  </script>
+
+
+<script>
+  function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    const main = document.querySelector(".main-content");
+    sidebar.classList.toggle("collapsed");
+    main.classList.toggle("expanded");
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+body {
+    display: flex;
+    font-family: 'Press Start 2P', cursive;
+    background: linear-gradient(to bottom, #1e1c4f, #e6dbf8);
+    color: white;
+    margin: 0;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.sidebar {
+    width: 220px;
+    background-color: #342b60;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    border-right: 3px solid #d0baff;
+    transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+    width: 60px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #ffccff;
+    padding: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    font-size: 0.6rem;
+    transition: background 0.2s;
+}
+
+.sidebar a:hover {
+    background-color: #463978;
+    color: white;
+}
+
+.sidebar .label {
+    margin-left: 10px;
+}
+
+.sidebar.collapsed .label {
+    display: none;
+}
+
+.toggle-btn {
+    margin: 0 auto 10px 10px;
+    padding: 6px 10px;
+    font-size: 0.6rem;
+    background-color: #d0baff;
+    color: #342b60;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.filters {
+    margin-bottom: 20px;
+    background-color: #2a244b;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #d0baff;
+    font-size: 0.6rem;
+}
+
+.genre-tabs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.tab {
+    background-color: #cbb8ff;
+    color: #2a244b;
+    border: none;
+    padding: 5px 10px;
+    font-family: 'Press Start 2P', cursive;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.tab.active {
+    background-color: #ffccff;
+}
+
+.tab:hover {
+    background-color: #e6dbf8;
+}
+
+.status-checkboxes {
+    display: flex;
+    gap: 20px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(20, 10, 50, 0.8);
+    font-family: 'Press Start 2P', cursive;
+}
+
+.modal-content {
+    background-color: #f9f7ff;
+    margin: 10% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    border: 4px double #ccbbff;
+    border-radius: 10px;
+    color: #2a244b;
+    font-size: 0.6rem;
+}
+
+.close-button {
+    float: right;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #9933cc;
+}
+
+
+/* Toggle Button */
+.toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #aa99ff;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 1001;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .toggle-btn:hover {
+    background-color: #7f6ae0;
+  }
+  
+  /* Sidebar Layout */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 180px;
+    height: 100vh;
+    background-color: #1e1458;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+    border-left: 2px solid #aa99ff;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    z-index: 1000;
+  }
+  
+  .sidebar.collapsed {
+    transform: translateX(100%);
+  }
+  
+  .main-content {
+    margin-right: 200px;
+    padding: 20px;
+  }
+  
+  .sidebar.collapsed ~ .main-content {
+    margin-right: 0;
+  }
+  
+  /* Now Playing Widget */
+  .now-playing {
+    margin-top: auto;
+    padding: 10px 6px;
+    width: 100%;
+    background-color: #2a244b;
+    font-size: 0.45rem;
+    color: #ffccff;
+    border-top: 1px dashed #d0baff;
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+  }
+  
+  .music-label {
+    color: #d0baff;
+    font-size: 0.5rem;
+    margin-bottom: 5px;
+  }
+  
+  .player-ui {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 5px;
+  }
+  
+  .music-btn {
+    font-size: 0.6rem;
+    background-color: #1d1645;
+    border: 1px solid #c8b6ff;
+    border-radius: 6px;
+    padding: 3px 5px;
+    box-shadow: 1px 1px 2px #000;
+    cursor: default;
+  }
+  
+  .track-info {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    height: 1rem;
+    position: relative;
+  }
+  
+  .scrolling-text {
+    display: inline-block;
+    padding-left: 100%;
+    animation: scrollText 10s linear infinite;
+    white-space: nowrap;
+  }
+  
+  @keyframes scrollText {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  
+  /* Hide the music player when sidebar is collapsed */
+  .sidebar.collapsed .now-playing {
+    display: none;
+  }
+  

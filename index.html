@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="https://64.media.tumblr.com/c1698db51d7396b0a9650d50ce6272d3/451429e34c195341-ea/s75x75_c1/9a5c782149eb4ecf99800baf6a4de833267def6a.gifv" />
+  <link rel="icon" href="your-favicon.ico" type="image/x-icon" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Language Toggle -->
+  <button id="lang-toggle" class="lang-button">UA</button>
+  <div id="google_translate_element" style="display:none;"></div>
+
+  <div class="content">
+    <section class="main-layout">
+      <!-- Navigation & Image Container -->
+      <div class="nav-photo-container">
+        <div class="left-column">
+          <img class="profile-pic" src="assets/myphoto.jpg" alt="My Photo" />
+        </div>
+
+        <div class="right-column">
+  <div class="nav-box-wrapper">
+    <div class="cute-divider">
+      <img src="https://64.media.tumblr.com/e359e2d1e0eb6c9f8a4b61050a14d155/tumblr_inline_n37gwcwIkI1qhwjx8.gif" alt="divider" />
+    </div>
+
+    <nav class="retro-nav">
+      <a href="index.html">Home</a>
+      <a href="blog.html">Blog</a>
+      <a href="readinglist.html">Media Log</a>
+      <a href="not_found.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="cute-divider">
+      <img src="https://64.media.tumblr.com/e359e2d1e0eb6c9f8a4b61050a14d155/tumblr_inline_n37gwcwIkI1qhwjx8.gif" alt="divider" />
+    </div>
+  </div>
+</div> 
+      </div>
+    </section>
+
+    <section class="bio-section">
+      <div class="bio-text">
+        <h2>Hi, I'm Veronika!</h2>
+        <p>
+          To be, or not to be, that is the question:
+Whether 'tis nobler in the mind to suffer
+The slings and arrows of outrageous fortune,
+Or to take arms against a sea of troubles
+And by opposing end them. To die—to sleep,
+No more; and by a sleep to say we end
+The heart-ache and the thousand natural shocks
+That flesh is heir to: 'tis a consummation
+Devoutly to be wish'd. To die, to sleep;
+To sleep, perchance to dream—ay, there's the rub:
+For in that sleep of death what dreams may come,
+When we have shuffled off this mortal coil,
+Must give us pause—there's the respect
+That makes calamity of so long life.
+        </p>
+      </div>
+    </section>
+
+    <section class="resume-section">
+      <div class="resume-buttons">
+        <a href="assets/resume-VS2025.pdf" target="_blank" class="download-btn">View Resume</a>
+        <a href="assets/resume-VS2025.pdf" download class="download-btn">Download Resume</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Google Translate Integration -->
+<script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,uk',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+
+  // Animate button and switch language
+  document.addEventListener('DOMContentLoaded', function () {
+    const langBtn = document.getElementById('lang-toggle');
+
+    langBtn.addEventListener('click', () => {
+      // Animate the button
+      langBtn.classList.add('lang-switching');
+      setTimeout(() => langBtn.classList.remove('lang-switching'), 500);
+
+      const newLang = langBtn.innerText === 'UA' ? 'uk' : 'en';
+      langBtn.innerText = newLang === 'uk' ? 'EN' : 'UA';
+
+      const interval = setInterval(() => {
+        const iframe = document.querySelector('iframe.goog-te-menu-frame');
+        if (iframe) {
+          const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+          const langLink = innerDoc.querySelector(`a[lang='${newLang}']`);
+          if (langLink) {
+            langLink.click();
+            clearInterval(interval);
+          }
+        }
+      }, 500);
+    });
+  });
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

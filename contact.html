@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Me</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style2.css" />
+  <link rel="icon" href="https://64.media.tumblr.com/d6382f0f283ce95f2c2a5eba6aaff81d/451429e34c195341-de/s75x75_c1/a6b23c7715235afb5ea3487849255cbad796de48.gifv" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=EB+Garamond&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="content">
+  <div class="contact-layout">
+    <!-- Left Column: Form -->
+    <div class="left-column">
+      <div class="contact-container">
+        <h2>Contact Me</h2>
+        <form action="https://formspree.io/f/xgvkzljk" method="POST">
+          <!-- Honeypot field to avoid spam -->
+          <input type="text" name="_gotcha" style="display:none" />
+          
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" placeholder="Your name..." required />
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required />
+
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
+
+          <button class="submit-btn" type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right Column: Navigation -->
+    <div class="right-column">
+      
+      <div class="nav-box-wrapper">
+
+    <div class="cute-divider">
+      <img src="https://64.media.tumblr.com/e359e2d1e0eb6c9f8a4b61050a14d155/tumblr_inline_n37gwcwIkI1qhwjx8.gif" alt="divider" />
+    </div>
+
+    <nav class="retro-nav">
+      <a href="index.html">Home</a>
+      <a href="blog.html">Blog</a>
+      <a href="readinglist.html">Media Log</a>
+      <a href="not_found.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="cute-divider">
+      <img src="https://64.media.tumblr.com/e359e2d1e0eb6c9f8a4b61050a14d155/tumblr_inline_n37gwcwIkI1qhwjx8.gif" alt="divider" />
+    </div>
+
+      <div class="social-links">
+      <a href="https://www.linkedin.com/in/vsaiadian" target="_blank">
+        <img src="assets/linkedin.png" alt="LinkedIn" />
+      </a>
+      <a href="https://github.com/vsaiadian" target="_blank">
+        <img src="assets/github.png" alt="GitHub" />
+      </a>
+      <a href="https://devpost.com/vsaiadian?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav" target="_blank">
+        <img src="assets/devpost.png" alt="Devpost" />
+      </a>
+      <a href="https://substack.com/@veronikasaiadian?utm_campaign=profile&utm_medium=profile-page" target="_blank">
+        <img src="assets/substack.png" alt="Substack" />
+      </a>
+      </div>    
+
+    </div>
+  </div>
+</div>
+
+<!-- Confirmation Modal -->
+<div id="confirmationModal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Message Sent!</h3>
+      <p>Thanks for reaching out. I'll get back to you soon!</p>
+      <button id="closeModal">Close</button>
+    </div>
+  </div>
+  
+  <script>
+    const form = document.querySelector("form");
+    const modal = document.getElementById("confirmationModal");
+    const closeBtn = document.getElementById("closeModal");
+  
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // Prevent actual submission
+      modal.classList.remove("hidden");
+      form.reset(); // Clear form fields
+    });
+  
+    closeBtn.addEventListener("click", function () {
+      modal.classList.add("hidden");
+    });
+  </script>
+  
+
+</body>
+</html>
