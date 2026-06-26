@@ -6,10 +6,14 @@
   <title>Contact Me</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="style2.css" />
-  <link rel="icon" href="https://64.media.tumblr.com/d6382f0f283ce95f2c2a5eba6aaff81d/451429e34c195341-de/s75x75_c1/a6b23c7715235afb5ea3487849255cbad796de48.gifv" />
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=EB+Garamond&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="contact-page">
+
+<!-- Language Toggle -->
+<button id="lang-toggle" class="lang-button">UA</button>
+<div id="google_translate_element" style="display:none;"></div>
 
 <div class="content">
   <div class="contact-layout">
@@ -17,10 +21,10 @@
     <div class="left-column">
       <div class="contact-container">
         <h2>Contact Me</h2>
-        <form action="https://formspree.io/f/xgvkzljk" method="POST">
+        <form id="contact-form" action="https://formspree.io/f/xgvkzljk" method="POST">
           <!-- Honeypot field to avoid spam -->
           <input type="text" name="_gotcha" style="display:none" />
-          
+
           <label for="name">Name:</label>
           <input type="text" id="name" name="name" placeholder="Your name..." required />
 
@@ -37,69 +41,93 @@
 
     <!-- Right Column: Navigation -->
     <div class="right-column">
-      
       <div class="nav-box-wrapper">
 
-    <div class="cute-divider">
-      <img src="https://64.media.tumblr.com/e359e2d1e0eb6c9f8a4b61050a14d155/tumblr_inline_n37gwcwIkI1qhwjx8.gif" alt="divider" />
-    </div>
+        <div class="cute-divider">
+          <img src="https://64.media.tumblr.com/e359e2d1e0eb6c9f8a4b61050a14d155/tumblr_inline_n37gwcwIkI1qhwjx8.gif" alt="divider" />
+        </div>
 
-    <nav class="retro-nav">
-      <a href="index.html">Home</a>
-      <a href="blog.html">Blog</a>
-      <a href="readinglist.html">Media Log</a>
-      <a href="not_found.html">Projects</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+        <nav class="retro-nav">
+          <a href="index.html">Home</a>
+          <a href="blog.html">Blog</a>
+          <a href="readinglist.html">Media Log</a>
+          <a href="projects.html">Projects</a>
+          <a href="contact.html">Contact</a>
+        </nav>
 
-    <div class="cute-divider">
-      <img src="https://64.media.tumblr.com/e359e2d1e0eb6c9f8a4b61050a14d155/tumblr_inline_n37gwcwIkI1qhwjx8.gif" alt="divider" />
-    </div>
+        <div class="cute-divider">
+          <img src="https://64.media.tumblr.com/e359e2d1e0eb6c9f8a4b61050a14d155/tumblr_inline_n37gwcwIkI1qhwjx8.gif" alt="divider" />
+        </div>
 
-      <div class="social-links">
-      <a href="https://www.linkedin.com/in/vsaiadian" target="_blank">
-        <img src="assets/linkedin.png" alt="LinkedIn" />
-      </a>
-      <a href="https://github.com/vsaiadian" target="_blank">
-        <img src="assets/github.png" alt="GitHub" />
-      </a>
-      <a href="https://devpost.com/vsaiadian?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav" target="_blank">
-        <img src="assets/devpost.png" alt="Devpost" />
-      </a>
-      <a href="https://substack.com/@veronikasaiadian?utm_campaign=profile&utm_medium=profile-page" target="_blank">
-        <img src="assets/substack.png" alt="Substack" />
-      </a>
-      </div>    
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/vsaiadian" target="_blank">
+            <img src="assets/linkedin.png" alt="LinkedIn" />
+          </a>
+          <a href="https://github.com/vsaiadian" target="_blank">
+            <img src="assets/github.png" alt="GitHub" />
+          </a>
+          <a href="https://devpost.com/vsaiadian?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav" target="_blank">
+            <img src="assets/devpost.png" alt="Devpost" />
+          </a>
+          <a href="https://substack.com/@veronikasaiadian?utm_campaign=profile&utm_medium=profile-page" target="_blank">
+            <img src="assets/substack.png" alt="Substack" />
+          </a>
+        </div>
 
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Confirmation Modal -->
 <div id="confirmationModal" class="modal hidden">
-    <div class="modal-content">
-      <h3>Message Sent!</h3>
-      <p>Thanks for reaching out. I'll get back to you soon!</p>
-      <button id="closeModal">Close</button>
-    </div>
+  <div class="modal-content">
+    <h3>Message Sent!</h3>
+    <p>Thanks for reaching out. I'll get back to you soon!</p>
+    <button id="closeModal">Close</button>
   </div>
-  
-  <script>
-    const form = document.querySelector("form");
-    const modal = document.getElementById("confirmationModal");
-    const closeBtn = document.getElementById("closeModal");
-  
-    form.addEventListener("submit", function (e) {
-      e.preventDefault(); // Prevent actual submission
-      modal.classList.remove("hidden");
-      form.reset(); // Clear form fields
-    });
-  
-    closeBtn.addEventListener("click", function () {
-      modal.classList.add("hidden");
-    });
-  </script>
-  
+</div>
+
+<script>
+  const form = document.getElementById("contact-form");
+  const modal = document.getElementById("confirmationModal");
+  const closeBtn = document.getElementById("closeModal");
+  const submitBtn = form.querySelector(".submit-btn");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending...";
+
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { "Accept": "application/json" }
+      });
+
+      if (res.ok) {
+        modal.classList.remove("hidden");
+        form.reset();
+      } else {
+        alert("Something went wrong. Please try again, or email me directly at veronikasaiadian@gmail.com.");
+      }
+    } catch (err) {
+      alert("Network error — please try again in a moment.");
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send";
+    }
+  });
+
+  closeBtn.addEventListener("click", function () {
+    modal.classList.add("hidden");
+  });
+</script>
+
+<!-- Shared language toggle (Google Translate) -->
+<script src="translate.js"></script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
